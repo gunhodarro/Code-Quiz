@@ -18,26 +18,46 @@ var allQuestions = [{
   }, {
     question: "JavaScript ______ are used to store multiple values in a single variable.?",
     options: ["Functions", "Numbers", "Arrays", "Booleans"],
-    answer: 2
+    answer: "Numbers"
   }
 ];
- 
 
+questionNum = 0;
+ //Create a for loop to go through the questions
+ for( var i =0; i < allQuestions.length; i++) {
+   return allQuestions[i];
 
-//Create a for loop to go through the questions
+ }
 function startGame(){ 
-  for (i = 0; i < allQuestions.length; i++) {
-    allQuestions[0].question;
-    allQuestions[1].question;
-    allQuestions[2].question;
-    allQuestions[3].question;
-    allQuestions[4].question;
-   }
-   }
+  //starttimeer
+  setTimeout(() => {
+    
+  }, 5000);
+  renderQ(questionNum)
+}
+
+function renderQ(questionIndex){
+  //show question
+  var q = document.createElement("div")
+  q.attr("class","title")
+  q.textContent = allQuestions[questionIndex].question;
+
+  //loop here and create a button for each q.options
+  //also add an event listenter for click of each one
   
-  console.log(allQuestions[0].question);
-  console.log(allQuestions[1].question);
-  console.log(allQuestions[2].question);
-  console.log(allQuestions[3].question);
-  console.log(allQuestions[4].question);
+    //thebutton.addEventListener("click", function(){
+      if(this.value == q.answer){
+        //nextQuestion
+      }else{
+        //decrement timer
+        //nextquestion
+      }
+   //}
+  
+}
+
+
+//checkif done
+questionNum++;
+renderQ(questionNum)
  

@@ -1,0 +1,25 @@
+#question-area{
+    margin: 25%;
+    background-color: olivedrab;
+}
+body{
+    background-color: blue;
+}
+.navbar{
+background-color: black;
+
+}
+button{
+    background-color: black;
+    color: white;
+    margin-left: 40%;
+}
+h2{
+    font-weight: bolder;
+    margin-left: 20%;
+    font-family: monospace;
+    font-size: 40px;
+}
+p{
+    font-family: fantasy;
+}
