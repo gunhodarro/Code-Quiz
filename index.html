@@ -10,16 +10,23 @@
 </head>
 <body>
         <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="#">View Highscores  Time:</a>
+                <a class="navbar-brand" href="index2.html">View HighScores  Time:</a>
               </nav>
-
-              <div id= "question-area">
-                  <h2>Coding Quiz Challenge</h2>
-                  <p>Time to take a coding quiz! See what you know and then log you high score! Answering a question incorrectly will result in a minus of 10 seconds.</p>
-                  <button>Start Quiz</button>
-              </div>
-            
-    <script src= "script.js"></script>
-    <script src= "questions.js"></script>
+       <div class="container">
+           <div id="question-container" class="hide">
+               <div id="question">Question</div>
+               <div id="answer-buttons" class="btn-grid">
+                   <button class="btn">Answer 1</button>
+                   <button class="btn">Answer 2</button>
+                   <button class="btn">Answer 3</button>
+                   <button class="btn">Answer 4</button>
+               </div>
+           </div>
+           <div class="contols">
+               <button id="start-btn" class="start-btn btn">Start</button>
+               <button id="next-btn" class="next-btn btn hide">Next</button>
+           </div>
+       </div>
+       <script src= "script.js"></script>
 </body>
 </html>

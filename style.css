@@ -1,25 +1,78 @@
-#question-area{
-    margin: 25%;
-    background-color: olivedrab;
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
-body{
-    background-color: blue;
+:root {
+    --hue-neutral: 200;
+    --hue-wrong: 0;
+    --hue-correct: 145;
 }
-.navbar{
-background-color: black;
+body {
+    --hue: var(--hue-neutral);
+    padding: 0;
+    margin: 0;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 100%, 20%);
 
 }
-button{
-    background-color: black;
-    color: white;
-    margin-left: 40%;
+body.correct {
+    --hue: var(--hue-correct);
 }
-h2{
-    font-weight: bolder;
+body.wrong {
+    --hue: var(--hue-wrong);
+}
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    
+    margin-top: 10%;
     margin-left: 20%;
-    font-family: monospace;
-    font-size: 40px;
 }
-p{
-    font-family: fantasy;
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+.btn {
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 30%);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: black;
+    outline: none;
+   
+}
+.btn:hover {
+    border-color: black;
+}
+.btn.correct{
+    --hue: var(--hue-correct);
+    color: black;
+    
+}
+.btn.wrong {
+    --hue: var(--hue-wrong);
+}
+.start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-left: 43%;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hide {
+    display: none;
 }
