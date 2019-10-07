@@ -9,10 +9,28 @@
     <title>CODE QUIZ</title>
 </head>
 <body>
-        <nav class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="index2.html">View HighScores  Time:</a>
-              </nav>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index2.html">View Highscores</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        </li>
+       </ul>
+    <span class="navbar-text">
+      Time:<div id="timer"></div>
+    </span>
+  </div>
+</nav>
        <div class="container">
+            <p id="intro">Time to take a coding quiz! Try your best and see where you land on the Highscores. 
+                    If you answer a question incorrectly 15 seconds will be removed from the time.
+                    You have 60 seconds for each answer, and good luck!
+                </p>
+        
+        
            <div id="question-container" class="hide">
                <div id="question">Question</div>
                <div id="answer-buttons" class="btn-grid">

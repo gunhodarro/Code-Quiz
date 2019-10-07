@@ -3,6 +3,7 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+var introinstructions = document.getElementById('intro')
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -12,7 +13,9 @@ nextButton.addEventListener('click', () => {
     setNextQuestion()
 })
 function startGame() {
+    
     startButton.classList.add('hide')
+    introinstructions.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
@@ -69,8 +72,15 @@ function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
         element.classList.add('correct')
+        var para = document.createElement("P");
+    para.innerText = "Correct!";
+    document.body.appendChild(para)
     } else {
         element.classList.add('wrong')
+        var para = document.createElement("P");
+    para.innerText = "Wrong!";
+    document.body.appendChild(para);
+        
     }
 }
 
@@ -78,42 +88,57 @@ function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
+function myFunction() {
+    var para = document.createElement("P");
+    para.innerText = "This is a paragraph.";
+    document.body.appendChild(para);
+  }
 
 const questions = [
     {
-        question: 'What is 2 +2',
+        question: 'What is  a binary variable, having two possible values called “true” and “false.”.?',
         answers: [
-            { text: '4', correct: true},
-            {text: '22', correct: false }
+            { text: 'boolean', correct: true},
+            { text: 'string', correct: false},
+            { text: 'number', correct: false},
+            { text: 'object', correct: false }
         ]
     },
     {
-        question: 'What is 2 +2',
+        question: 'A ______ can be any text inside double or single quotes?',
         answers: [
-            { text: '4', correct: true},
-            {text: '22', correct: false }
+            { text: 'object', correct: false},
+            {text: 'number', correct: false },
+            {text: 'boolean', correct: false },
+            {text: 'string', correct: true }
         ]
     },
     {
-        question: 'What is 2 +2',
+        question: '_______ can be written with or without decimals?',
         answers: [
-            { text: '4', correct: true},
-            {text: '22', correct: false }
+            { text: 'boolean', correct: false},
+            {text: 'numbers', correct: true },
+            {text: 'string', correct: false },
+            {text: 'function', correct: false }
         ]
     },
     {
-        question: 'What is 2 +2',
+        question: 'A JavaScript ______ is a block of code designed to perform a particular task?',
         answers: [
-            { text: '4', correct: true},
-            {text: '22', correct: false }
+            { text: 'object', correct: false},
+            {text: 'boolean', correct: false },
+            {text: 'function', correct: true },
+            {text: 'string', correct: false }
         ]
     },
     {
 
-        question: 'What is 2 +2',
+        question: 'JavaScript ______ are used to store multiple values in a single variable.?',
         answers: [
-            { text: '4', correct: true},
-            {text: '22', correct: false }
+            { text: 'functions', correct: false},
+            {text: 'numbers', correct: false },
+            {text: 'arrays', correct: true },
+            {text: 'booleans', correct: false }
         ]
     }
 ]
