@@ -11,7 +11,10 @@ startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
+    document.getElementsByTagName("P")[0].innerHTML = "";
+
 })
+
 function startGame() {
     
     startButton.classList.add('hide')
@@ -20,6 +23,8 @@ function startGame() {
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
     setNextQuestion()
+
+
 }
 
 function setNextQuestion() {
@@ -52,19 +57,22 @@ function resetState() {
 }
 
 
+
 function selectAnswer(e){
+    var container = document.getElementById("container")
     const selectedButton = e.target
     const correct = selectedButton.dataset.correct
-    setStatusClass(document.body, correct)
-    Array.from(answerButtonsElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct)
-    })
+    setStatusClass(document.getElementById("container"), correct)
+   
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide')
     } else {
         startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
     }
+    
+        
+    
     
 }
 
@@ -74,14 +82,14 @@ function setStatusClass(element, correct) {
         element.classList.add('correct')
         var para = document.createElement("P");
     para.innerText = "Correct!";
-    document.body.appendChild(para)
+    document.getElementById('container').appendChild(para)
     } else {
         element.classList.add('wrong')
         var para = document.createElement("P");
     para.innerText = "Wrong!";
-    document.body.appendChild(para);
-        
-    }
+    document.getElementById("container").appendChild(para);
+        }
+       
 }
 
 function clearStatusClass(element) {
