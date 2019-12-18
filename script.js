@@ -1,152 +1,144 @@
-const startButton = document.getElementById('start-btn')
-const nextButton = document.getElementById('next-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
-var introinstructions = document.getElementById('intro')
 
-let shuffledQuestions, currentQuestionIndex
-
-startButton.addEventListener('click', startGame)
-nextButton.addEventListener('click', () => {
-    currentQuestionIndex++
-    setNextQuestion()
-    document.getElementsByTagName("P")[0].innerHTML = "";
-
-})
-
-function startGame() {
-    
-    startButton.classList.add('hide')
-    introinstructions.classList.add('hide')
-    shuffledQuestions = questions.sort(() => Math.random() - .5)
-    currentQuestionIndex = 0
-    questionContainerElement.classList.remove('hide')
-    setNextQuestion()
-
-
-}
-
-function setNextQuestion() {
-    resetState()
-    showQuestion(shuffledQuestions[currentQuestionIndex])
-}
-
-
-function showQuestion(question) {
-    questionElement.innerText = question.question
-    question.answers.forEach(answer => {
-        const button = document.createElement('button')
-        button.innerText = answer.text
-        button.classList.add('btn')
-        if (answer.correct) {
-            button.dataset.correct = answer.correct
-        }
-        button.addEventListener('click', selectAnswer)
-        answerButtonsElement.appendChild(button)
-    })
-}
-
-
-function resetState() {
-    clearStatusClass(document.body)
-    nextButton.classList.add('hide')
-    while (answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
-    }
-}
-
-
-
-function selectAnswer(e){
-    var container = document.getElementById("container")
-    const selectedButton = e.target
-    const correct = selectedButton.dataset.correct
-    setStatusClass(document.getElementById("container"), correct)
-   
-    if (shuffledQuestions.length > currentQuestionIndex + 1) {
-        nextButton.classList.remove('hide')
-    } else {
-        startButton.innerText = 'Restart'
-        startButton.classList.remove('hide')
-    }
-    
-        
-    
-    
-}
-
-function setStatusClass(element, correct) {
-    clearStatusClass(element)
-    if (correct) {
-        element.classList.add('correct')
-        var para = document.createElement("P");
-    para.innerText = "Correct!";
-    document.getElementById('container').appendChild(para)
-    } else {
-        element.classList.add('wrong')
-        var para = document.createElement("P");
-    para.innerText = "Wrong!";
-    document.getElementById("container").appendChild(para);
-        }
-       
-}
-
-function clearStatusClass(element) {
-    element.classList.remove('correct')
-    element.classList.remove('wrong')
-}
-function myFunction() {
-    var para = document.createElement("P");
-    para.innerText = "This is a paragraph.";
-    document.body.appendChild(para);
-  }
+var start = document.getElementById("startDiv");
+var quiz = document.getElementById("quizDiv");
+var scoreDiv = document.getElementById("scoreDiv");
+var question = document.getElementById("question")
+var answer1 = document.getElementById("answer1");
+var answer2 = document.getElementById("answer2");
+var answer3 = document.getElementById("answer3");
+var answer4 = document.getElementById("answer4");
+var totalScore = document.getElementById("totalScore");
+var seconds = 60 ;
 
 const questions = [
     {
-        question: 'What is  a binary variable, having two possible values called “true” and “false.”.?',
-        answers: [
-            { text: 'boolean', correct: true},
-            { text: 'string', correct: false},
-            { text: 'number', correct: false},
-            { text: 'object', correct: false }
-        ]
+        question: "What is  a binary variable, having two possible values called “true” and “false”?",
+        answer1: "String",
+        answer2: "Boolean",
+        answer3: "Object",
+        answer4: "Number",
+        correct: "1"
     },
     {
-        question: 'A ______ can be any text inside double or single quotes?',
-        answers: [
-            { text: 'object', correct: false},
-            {text: 'number', correct: false },
-            {text: 'boolean', correct: false },
-            {text: 'string', correct: true }
-        ]
+        question: "A ______ can be any text inside double or single quotes?",
+        answer1: "Object",
+        answer2: "Number",
+        answer3: "Boolean",
+        answer4: "String",
+        correct: "4"
     },
     {
-        question: '_______ can be written with or without decimals?',
-        answers: [
-            { text: 'boolean', correct: false},
-            {text: 'numbers', correct: true },
-            {text: 'string', correct: false },
-            {text: 'function', correct: false }
-        ]
+        question: "_______ can be written with or without decimals?",
+        answer1: "Strings",
+        answer2: "Booleans",
+        answer3: "Functions",
+        answer4: "Numbers",
+        correct: "4"
     },
     {
-        question: 'A JavaScript ______ is a block of code designed to perform a particular task?',
-        answers: [
-            { text: 'object', correct: false},
-            {text: 'boolean', correct: false },
-            {text: 'function', correct: true },
-            {text: 'string', correct: false }
-        ]
+        question: "A JavaScript ______ is a block of code designed to perform a particular task?",
+        answer1: "Object",
+        answer2: "Boolean",
+        answer3: "Function",
+        answer4: "String",
+        correct: "3"
     },
     {
-
-        question: 'JavaScript ______ are used to store multiple values in a single variable.?',
-        answers: [
-            { text: 'functions', correct: false},
-            {text: 'numbers', correct: false },
-            {text: 'arrays', correct: true },
-            {text: 'booleans', correct: false }
-        ]
-    }
+        question: "JavaScript ______ are used to store multiple values in a single variable.?",
+        answer1: "Functions",
+        answer2: "Arrays",
+        answer3: "Booleans",
+        answer4: "Objects",
+        correct: "2"
+    },
 ]
+
+
+var lastQuestion = questions.length-1;
+var runningQuestion = 0;
+
+
+function renderQuestion() {
+    var q = questions[runningQuestion];
+    question.innerHTML = "<h3>" + q.question + "</h3>";
+    answer1.innerHTML = q.answer1;
+    answer2.innerHTML = q.answer2;
+    answer3.innerHTML = q.answer3;
+    answer4.innerHTML = q.answer4;
+}
+var startBtn = document.getElementById("startBtn")
+startBtn.addEventListener("click", startQuiz)
+
+function countDown() {
+    var timeLeft = document.getElementById("timer")
+    var x = setInterval(function() {
+        seconds--;
+        var secondsString = seconds.toString();
+        timeLeft.innerText = secondsString;
+        if (seconds <= 0) {
+            clearInterval(x);
+            alert("TOO SLOW!!")
+        } else if (lastQuestion === runningQuestion){
+            clearInterval(x)
+        }
+    }, 1000);
+}
+
+function  startQuiz() {
+    start.style.display = "none";
+    renderQuestion();
+    quiz.style.display = "block"
+    countDown();
+    }
+
+function checkAnswer(answer) {
+    if (answer == questions [runningQuestion].correct) {
+        console.log("correct!");
+    } else {
+        seconds -= 10;
+        console.log("incorrect");
+    }
+    count = 0
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else 
+    scoreRender();
+}
+function correctAnswer() {
+    document.getElementById()
+}
+
+
+function scoreRender() {
+    quiz.style.display = "none"
+    scoreDiv.style.display = "block";
+    totalScore.innerHTML = "Your final score is " + seconds;
+}
+
+
+var userInitals = document.getElementById("user-initials");
+var submitScore = document.getElementById("submitScore");
+
+var highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+submitScore.addEventListener("click", function(submitScore){
+    event.preventDefault();
+
+    var user = {
+        initials: userInitals.value.trim(),
+        score: seconds,
+    }
+    console.log(user)
+    highScores.push(user);
+    
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    console.log(highScores)
+    window.location="index2.html";
+    
+    
+})
+
+
+
+  

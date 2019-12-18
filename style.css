@@ -6,20 +6,18 @@ body {
    height: 100vh;
    justify-content: center;
    align-items: center;
-   background-color: red;
-    
-
+   background-color: red;  
 }
-
-#container {
+.container {
     width: 800px;
     max-width: 80%;
     background-color: blue;
     border-radius: 5px;
     padding: 10px;
-    
+    font-weight: bolder;
     margin-top: 10%;
     margin-left: 20%;
+    color: black;
 }
 .btn-grid {
     display: grid;
@@ -27,7 +25,7 @@ body {
     gap: 10px;
     margin: 20px 0;
 }
-.btn {
+.answer {
     --hue: var(--hue-neutral);
     border: 1px solid;
     background-color: ;
@@ -35,12 +33,6 @@ body {
     padding: 5px 10px;
     color: black;
     outline: none;
-   
-}
-.btn:hover {
-    border-color: black;
-}
-
 }
 .start-btn, .next-btn {
     font-size: 1.5rem;
@@ -62,6 +54,9 @@ h1{
 textarea{
     margin-left: 35%;
 }
-.bg-light{
-    background-color: blue!important;
+h5{
+    margin-right : 0%;
+}
+.navbar{
+    background-color: blue;
 }
