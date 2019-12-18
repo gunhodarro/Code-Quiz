@@ -1,12 +1,12 @@
 
-var start = document.getElementById("startDiv");
-var quiz = document.getElementById("quizDiv");
-var scoreDiv = document.getElementById("scoreDiv");
-var question = document.getElementById("question")
-var answer1 = document.getElementById("answer1");
-var answer2 = document.getElementById("answer2");
-var answer3 = document.getElementById("answer3");
-var answer4 = document.getElementById("answer4");
+var start = document.getElementById("firstDiv");
+var quiz = document.getElementById("mainDiv");
+var scores = document.getElementById("scoreDiv");
+var ques = document.getElementById("question")
+var ans1 = document.getElementById("answer1");
+var ans2 = document.getElementById("answer2");
+var ans3 = document.getElementById("answer3");
+var ans4 = document.getElementById("answer4");
 var totalScore = document.getElementById("totalScore");
 var seconds = 60 ;
 
